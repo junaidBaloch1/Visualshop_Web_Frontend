@@ -34,14 +34,14 @@ const Navbar = () => {
           <Link to="/" className={classes.link}>
             Home
           </Link>
-          <Link to="/About Us" className={classes.link}>
+          <Link to="/AboutUs" className={classes.link}>
           About Us
           </Link>
           <Link to="/Cart" className={classes.link}>
             Cart
           </Link>
           <Box>
-            <Link to="/" className={classes.link} onClick={handleOpen}>
+            <Link to="/signin" className={classes.link} /*onClick={handleOpen}*/>
               Join
             </Link>
 

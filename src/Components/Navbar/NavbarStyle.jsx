@@ -3,11 +3,12 @@ const useStyles = makeStyles((theme) => ({
   navlinks: {
     marginLeft: theme.spacing(10),
     display: "flex",
+    fontFamily: "Helvetica Neue",
   },
   logo: {
     flexGrow: "1",
     cursor: "pointer",
-    fontFamily: "Courier New",
+    fontFamily: "Helvetica Neue",
     fontWeight: "bold",
 
     "&:hover": {
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(20),
     "&:hover": {
       borderBottom: "2px solid white",
-      fontFamily: "Helvetica",
+      fontFamily: "Helvetica Neue",
     },
   },
   AppColor: {
