@@ -1,10 +1,10 @@
 import React from 'react';
-import Navbar from "../../Components/Navbar/Navbar.js"
+import MyContainer from '../../Components/Container/Container'
 export default function AboutUsScreen() {
   return (
-    <div>
-      <Navbar/>
+    <MyContainer>
+      
         <h1>This is AboutUs Screen</h1>
-    </div>
+    </MyContainer>
     );
 }

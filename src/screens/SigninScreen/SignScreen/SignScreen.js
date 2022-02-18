@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import Navbar from '../../../Components/Navbar/Navbar';
+import MyContainer from '../../../Components/Container/Container'
 import * as userActions from '../../../store/actions/userActions/userActions'
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
@@ -57,7 +57,7 @@ const SignScreen = (props) => {
         time: date.getTime()
       }
           setLoading(false);
-        //store data in local storage
+        //store data in local storage and redux
         props.updateLoginData(response.data.access, date.getTime())
       
         localStorage.setItem('LOGIN_INFO', JSON.stringify(LOGIN_INFO));
@@ -72,12 +72,8 @@ const SignScreen = (props) => {
      }
 
   return (
+    <MyContainer>
       <Grid>
-        
-          <Navbar/>
-
-         
-
         <h1>This is user signin screen</h1>
         <h2>{error}</h2>
       <Paper elevation={2} className={classes.paperStyle}>
@@ -107,15 +103,16 @@ const SignScreen = (props) => {
             required
           />
           <FormControlLabel control={<Checkbox name="checked" color="primary" />} label="Remember me"/>
-          <Button type="submit" variant="contained" onClick={Validate} className={classes.btnstyle}>Signin</Button>
+          <Link to='/profile'><Button type="submit" variant="contained" onClick={Validate} className={classes.btnstyle}>Signin</Button></Link>
           <Button type="submit" variant="contained" className={classes.btnstyle}>Login With Google</Button>
            </FormControl>
         <Typography>
-          <Link className={classes.linksStyle} to='/codeEmail'>Forget Password</Link><br/>
+          <Link  className={classes.linksStyle} to='/codeEmail'>Forget Password</Link><br/>
           <Link className={classes.linksStyle} to='/signup'>SignUp Here</Link>
         </Typography>
       </Paper>
     </Grid>
+    </MyContainer>
    
   )
 };

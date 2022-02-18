@@ -5,24 +5,24 @@ import {
   Toolbar,
   CssBaseline,
   Typography,
+  Container,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useStyles } from "./NavbarStyle.jsx";
-import { Modal, Box } from "@mui/material";
-//import SignInScreen from "../../Screen/SigninScreen/SigninScreen.js";
+import{useTheme, useMediaQuery} from '@material-ui/core'
+import MenuPopupState from './MenuPopupState'
 import CloseSharpIcon from "@mui/icons-material/CloseSharp";
-//import RegisterScreen from "../../Screen/RegisterScreen/RegisterScreen.js";
+
+
 
 const Navbar = () => {
   const classes = useStyles();
-  const [isRegisterpage, setRegisterpage] = useState(false);
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => {
-    setOpen(false);
-    setRegisterpage(false);
-  };
+ let theme = useTheme();
+
+
+ let isMatch = useMediaQuery(theme.breakpoints.down('sm'));
+  
   return (
     <AppBar position="static" className={classes.AppColor}>
       <CssBaseline />
@@ -30,44 +30,22 @@ const Navbar = () => {
         <Typography variant="h4" className={classes.logo}>
           VisualShop
         </Typography>
-        <div className={classes.navlinks}>
+        <Container className={classes.navlinks}>
           <Link to="/" className={classes.link}>
             Home
           </Link>
-          <Link to="/AboutUs" className={classes.link}>
-          About Us
+          <Link to="/about" className={classes.link}>
+          About 
           </Link>
-          <Link to="/Cart" className={classes.link}>
+          <Link to="/cart" className={classes.link}>
             Cart
           </Link>
-          <Box>
-            <Link to="/signin" className={classes.link} /*onClick={handleOpen}*/>
+         
+            <Link to="/signin" className={classes.link}>
               Join
             </Link>
 
-            <Modal
-              open={open}
-              className={classes.Modalstyle}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              <Box>
-                <Button onClick={handleClose} className={classes.buttonstyle}>
-                  <CloseSharpIcon
-                    style={{ fontSize: "32px" }}
-                    className={classes.crossIcon}
-                  />
-                </Button>
-                {/* {isRegisterpage ? (
-                  <RegisterScreen setRegisterpage={setRegisterpage} />
-                ) : (
-                  <SignInScreen setRegisterpage={setRegisterpage} />
-                )} */}
-              </Box>
-            </Modal>
-          </Box>
-        </div>
+        </Container>
       </Toolbar>
     </AppBar>
   );

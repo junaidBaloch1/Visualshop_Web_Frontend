@@ -3,11 +3,13 @@ import Navbar from '../../../Components/Navbar/Navbar.js';
 import { Container } from '@material-ui/core';
 import {Link} from 'react-router-dom'
 import {useStyles} from './CreditCardScreenStyle'
+import MyContainer from '../../../Components/Container/Container'
+
 const CreditCardScreen = () => {
   const classes = useStyles();
   return(
-    <div>
-      <Navbar/>
+    <MyContainer>
+      
         <h1>This is credit card screen </h1>
         <Container>
         <Link to='/'><button className={classes.Button}>Add More Product</button></Link> 
@@ -16,7 +18,7 @@ const CreditCardScreen = () => {
 
         </Container>
 
-    </div>
+    </MyContainer>
   ) 
 };
 

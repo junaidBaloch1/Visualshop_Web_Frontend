@@ -5,30 +5,32 @@ import {Link} from "react-router-dom"
 import { Container } from '@material-ui/core';
 import * as userActions from '../../../store/actions/userActions/userActions'
 import { connect } from 'react-redux';
+import MyContainer from '../../../Components/Container/Container'
+
 const UserinfoScreen = (props) => {
  
  const classes = useStyles();
  const UserLogoutHandeler = () =>{
     
      props.updateLoginData(null,null);
-     var USER_INFO = window.localStorage.key(USER_INFO);
-     localStorage.clear(USER_INFO);
+     var USER_INFO_KEY = localStorage.key('LOGIN_INFO');
+     localStorage.clear(USER_INFO_KEY);
  }
 
  
   return(
   
-    <div>
-      <Navbar/>
+    <MyContainer>
+      
         <h1>This is user personal info screen</h1>
         <Container>
-        <Link className={classes.links} to='/userinfo'>user Info</Link>
-        <Link className={classes.links} to='/usercomplaint'>User Complaint</Link>
-        <Link className={classes.links} to='/ordersDetails'>User orders Detail</Link>
+        <Link className={classes.links} to='/profile'>user Info</Link>
+        <Link className={classes.links} to='/complaint'>User Complaint</Link>
+        <Link className={classes.links} to='/orders'>User orders Detail</Link>
         <Link className={classes.links} to='/signin'  onClick={UserLogoutHandeler}>Logout</Link>
         
         </Container>
-    </div>
+    </MyContainer>
   ) 
 };
 
