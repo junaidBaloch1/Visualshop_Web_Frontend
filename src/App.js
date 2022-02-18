@@ -22,7 +22,7 @@ import * as userActions from "./store/actions/userActions/userActions";
 import { diff_minutes } from "./FunctionsFolder/FunctionsFile";
 import ErrorScreen from './screens/ErrorScreen/ErrorScreen'
 import React, { useEffect } from "react";
-const date = new Date();
+
 const App = (props) => {
   useEffect(async () => {
     const USER_LOGIN_INFO = JSON.parse(localStorage.getItem("LOGIN_INFO"));
@@ -34,7 +34,8 @@ const App = (props) => {
   }, []);
 
   const isLoggedin = () => {
-    console.log("dd")
+    console.log("App js is loggedin render")
+    const date = new Date();
     if (props.access == null) return false;
     const timeDiff = diff_minutes(date.getTime(), props.timeAdded);
     if (timeDiff < 50) return true;

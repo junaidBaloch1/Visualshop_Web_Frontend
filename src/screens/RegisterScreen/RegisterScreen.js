@@ -12,7 +12,7 @@ const RegisterScreen = () => {
   return(
     <MyContainer>
       
-      <Navbar/>
+    
 
         <h1>This is user register signup screen </h1>
         <Container>

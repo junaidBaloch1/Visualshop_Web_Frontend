@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { useStyles } from './SignScreenStyle';
 import { UserLoginHandler, ValidateEmail } from '../../../FunctionsFolder/FunctionsFile';
-import CircularIndicator from '../../../Components/CircularIndicator/CircularIndicator'
+
 
 
 import {
@@ -81,7 +81,7 @@ const SignScreen = (props) => {
        
           <Avatar className={classes.avatarStyle}></Avatar>
           <Typography variant="h4">Sign In</Typography>
-          {loading==true ? <CircularIndicator/>:null}
+          
       
         </Grid>
         <FormControl className={classes.formStyle}>
