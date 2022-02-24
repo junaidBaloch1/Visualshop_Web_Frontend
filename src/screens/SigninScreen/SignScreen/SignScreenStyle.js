@@ -1,5 +1,4 @@
 import { makeStyles, createStyles } from "@material-ui/core/styles";
-
 const useStyles = makeStyles((theme) =>
   createStyles({
 
@@ -8,56 +7,85 @@ const useStyles = makeStyles((theme) =>
         display: "flex",
       },
       paperStyle: {
-        padding: "1em",
-        height: "55em",
-        width: "80em",
-        margin: "0em auto",
-        borderRadius: "2em",
+        padding: theme.spacing(1),
+        [theme.breakpoints.up('md')]: {
+          //  backgroundColor: theme.palette.secondary.main,
+          width:"60%",
+        
+        },
+       
+        [theme.breakpoints.down('md')]: {
+          //  backgroundColor: theme.palette.primary.main,
+          width:"80%",
+        
+        },
+      
+         margin: "0em auto",
+         padding:"2em",
+        
       },
+
+      // paperStyle: {
+      //   padding: "1em",
+      //   width: "50%",
+        
+      //   margin: "0em auto",
+      //   // backgroundColor:"#ff9100",
+      //   borderRadius: "2em",
+      // },
+
       avatarStyle: {
         backgroundColor: "#442c2e",
         height: "3em",
         width: "3em",
-        marginLeft: "1.5em",
-        marginTop: "1em",
+        marginBottom: "1em",
+        
+        
+        
       },
       btnstyle: {
-        display: "flex",
-        width: "10em",
-        marginTop: "1em",
-        marginLeft: "4em",
-        textAlign: "center",
-    
         margin: "8px 0",
         backgroundColor: "#442c2e",
         color: "white",
-        // Width: "2em",
+        width:"12em",
+       
         fontSize: "21px",
         "&:hover": {
           color: "black",
           backgroundColor: "white",
-        },
       },
       formStyle: {
-        margin: "0em 5em",
-        padding: "0em 5em",
+       // margin: "0em 8em",
+       // padding: "0em 2em",
         // fontSize: "21px",
+        alignItems:"center"
+        },
       },
       linksStyle: {
         fontSize: "22px",
         textTransform: "capitalize",
         color: "blue",
+        textDecoration: "None",
+       
       },
-      buttonstyle: {
-        color: "blue",
-        fontSize: "22px",
-        textTransform: "capitalize",
-        textDecoration: "underline",
-        "&:hover": {
-          backgroundColor: "white",
-          textDecoration: "underline",
-        },
-      },
-})
-);
-export { useStyles };
+      ArrangeBtn :{
+        
+        display: "flex",
+        // margin: "0em 11em",
+        alignItems:'center',
+        flexDirection: "column",
+      
+    },
+      // buttonstyle: {
+      //   color: "blue",
+      //   fontSize: "22px",
+      //   textTransform: "capitalize",
+      //   textDecoration: "underline",
+      //   "&:hover": {
+      //     backgroundColor: "white",
+      //     textDecoration: "underline",
+      //   },
+      // },
+    })
+    );
+    export { useStyles };

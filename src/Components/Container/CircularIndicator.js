@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 const CircularIndicator = () => {
     return (
       <Box sx={{ display: 'flex' }}>
-        <CircularProgress style={{color:"#000000", margin:"20em 35em"}} />
+        <CircularProgress style={{color:"#ff9100",size:"5em 5em", margin:"30em 70em"}} />
       </Box>
     );
   }

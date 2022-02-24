@@ -1,16 +1,15 @@
 import React from 'react';
-import Navbar from "../../Components/Navbar/Navbar.js"
 import {Container} from '@material-ui/core'
+import { connect } from "react-redux";
 import {useStyles} from './HomeScreenStyle';
 import { Link } from 'react-router-dom';
 import MyContainer from '../../Components/Container/Container'
 import * as userAction from '../../store/actions/userActions/userActions'
-import { connect } from "react-redux";
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
   const classes = useStyles();
   return(
-   <MyContainer access={props.access} timeAdded={props.timeAdded} updateLoginData={props.updateLoginData}>
+   <MyContainer  loading={false} access={props.access} timeAdded={props.timeAdded} updateLoginData={props.updateLoginData}>
    
     <h1>This is home screen</h1>
     <Container>

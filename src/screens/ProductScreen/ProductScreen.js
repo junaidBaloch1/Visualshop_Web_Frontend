@@ -11,7 +11,7 @@ const ProductScreen = (props) => {
   const [loading,setLoading]=useState(false)
   return(
 
-    <MyContainer access={props.access} timeAdded={props.timeAdded} updateLoginData={props.updateLoginData}>
+    <MyContainer loading={false} access={props.access} timeAdded={props.timeAdded} updateLoginData={props.updateLoginData}>
 
         <h1>This is product detail screen</h1>
         <Container>

@@ -1,15 +1,16 @@
 import React from 'react';
-import Navbar from "../../../Components/Navbar/Navbar.js"
+import { connect } from "react-redux";
 import { useStyles } from './OrdersScreenStyle';
 import {Link} from "react-router-dom"
+import * as userAction from '../../../store/actions/userActions/userActions'
 import { Container } from '@material-ui/core';
 import MyContainer from '../../../Components/Container/Container'
 
-const OrdersScreen = () => {
+const OrdersScreen = (props) => {
   const classes =useStyles();
   return(
 
-    <MyContainer>
+    <MyContainer loading={false}  access={props.access} timeAdded={props.timeAdded} updateLoginData={props.updateLoginData}>
       
         <h1>This is number of orders and detail screen</h1>
         <Container>
@@ -23,4 +24,19 @@ const OrdersScreen = () => {
   ) 
 };
 
-export default OrdersScreen;
+
+const mapStateToProps = (state) => {
+  return {
+    access: state.userReducer.access,
+    timeAdded: state.userReducer.timeAdded,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateLoginData: (access, timeAdded) =>
+      dispatch(userAction.updateLoginData(access, timeAdded)),
+  };
+};
+export default connect(mapStateToProps,mapDispatchToProps)(OrdersScreen);
+

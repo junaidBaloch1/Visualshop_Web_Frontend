@@ -1,15 +1,16 @@
 import React from 'react';
-import Navbar from '../../../Components/Navbar/Navbar.js';
+import { connect } from "react-redux";
+import * as userAction from '../../../store/actions/userActions/userActions'
 import {Link} from 'react-router-dom';
 import { Container } from '@material-ui/core';
 import {useStyles} from './ComplaintScreenStyle'
 import MyContainer from '../../../Components/Container/Container'
 
-const ComplaintScreen = () => {
+const ComplaintScreen = (props) => {
   const classes = useStyles();
   return(
 
-   <MyContainer>
+   <MyContainer loading={false}  access={props.access} timeAdded={props.timeAdded} updateLoginData={props.updateLoginData}>
     
        <h1>This is complaint id screen</h1>
 
@@ -25,4 +26,19 @@ const ComplaintScreen = () => {
   ) 
 };
 
-export default ComplaintScreen;
+
+const mapStateToProps = (state) => {
+  return {
+    access: state.userReducer.access,
+    timeAdded: state.userReducer.timeAdded,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateLoginData: (access, timeAdded) =>
+      dispatch(userAction.updateLoginData(access, timeAdded)),
+  };
+};
+export default connect(mapStateToProps,mapDispatchToProps)(ComplaintScreen);
+

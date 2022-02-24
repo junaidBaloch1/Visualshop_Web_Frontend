@@ -19,7 +19,7 @@ import ShippingScreen from "./screens/ShippingScreen/ShippingScreen";
 import CreditCardScreen from "./screens/PaymentScreen/CreditCardScreen/CreditCardScreen";
 import JazzCashScreen from "./screens/PaymentScreen/JazzCashScreen/JazzCashScreen";
 import * as userActions from "./store/actions/userActions/userActions";
-import { diff_minutes } from "./FunctionsFolder/FunctionsFile";
+import { diff_minutes } from "./APIFunctionsFolder/APIFunctionsFile";
 import ErrorScreen from './screens/ErrorScreen/ErrorScreen'
 import React, { useEffect } from "react";
 

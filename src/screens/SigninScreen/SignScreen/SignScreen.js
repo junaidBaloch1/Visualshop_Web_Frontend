@@ -1,131 +1,145 @@
-import React,{useState} from 'react';
-import MyContainer from '../../../Components/Container/Container'
-import * as userActions from '../../../store/actions/userActions/userActions'
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import MyContainer from "../../../Components/Container/Container";
+import * as userActions from "../../../store/actions/userActions/userActions";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { useStyles } from './SignScreenStyle';
-import { UserLoginHandler, ValidateEmail } from '../../../FunctionsFolder/FunctionsFile';
-
-
+import {
+  UserLoginHandler,
+  ValidateEmail,
+} from "../../../APIFunctionsFolder/APIFunctionsFile";
 
 import {
-  Grid,
   Paper,
   Avatar,
   TextField,
-  Button,
   Box,
+  Button,
   Typography,
-  FormControl,
 } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-
-const date = new Date();
+import { useStyles } from "./SignScreenStyle";
+import { useTheme, useMediaQuery } from "@material-ui/core";
 
 const SignScreen = (props) => {
-     
-     const classes = useStyles();
+  const classes = useStyles();
+  let theme = useTheme();
+  let isMatch = useMediaQuery(theme.breakpoints.down("sm"));
 
-     const [email, setEmail] = useState("");
-     const [password, setPassword] = useState("");
-     const [error, setError] = useState("")
-     const [loading, setLoading] = useState(false);
-     
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-     const Validate = () => {
-      if (!ValidateEmail(email)) {
-          setError("Please enter valid Email")
-          return false;
-      }
-      if (password == "") {
-          setError("Please Enter Password")
-          return false;
-      }
-      UserLogin()
-  }
+  const Validate = () => {
+    if (!ValidateEmail(email)) {
+      setError("Please enter valid Email");
+      return false;
+    }
+    if (password == "") {
+      setError("Please Enter Password");
+      return false;
+    }
+    UserLogin();
+  };
 
-     const UserLogin =async  () =>{
-      setLoading(true)
-     
-     const  response = await UserLoginHandler(email,password);
-      
-     if(response.status == 200){
+  const UserLogin = async () => {
+    setLoading(true);
+    const date = new Date();
+    const response = await UserLoginHandler(email, password);
 
+    if (response.status == 200) {
       const LOGIN_INFO = {
         access: response.data.access,
-        time: date.getTime()
-      }
-          setLoading(false);
-        //store data in local storage and redux
-        props.updateLoginData(response.data.access, date.getTime())
-      
-        localStorage.setItem('LOGIN_INFO', JSON.stringify(LOGIN_INFO));
-     }
-     else{
-       setError(response.data);
-       setLoading(false);
+        time: date.getTime(),
+      };
+      setLoading(false);
+      //store data in local storage and redux
+      props.updateLoginData(response.data.access, date.getTime());
 
-     }
-
-
-     }
+      localStorage.setItem("LOGIN_INFO", JSON.stringify(LOGIN_INFO));
+    } else {
+      setError(response.data);
+      setLoading(false);
+    }
+  };
 
   return (
-    <MyContainer>
-      <Grid>
-        <h1>This is user signin screen</h1>
-        <h2>{error}</h2>
-      <Paper elevation={2} className={classes.paperStyle}>
-        <Grid align="center">
-       
-          <Avatar className={classes.avatarStyle}></Avatar>
-          <Typography variant="h4">Sign In</Typography>
-          
-      
-        </Grid>
-        <FormControl className={classes.formStyle}>
-          
-          <TextField
-            onChange={(e) => setEmail(e.target.value)}
-            label="Username"
-            placeholder="Enter username"
-            fullWidth
-            required
-            
-          />
-          <TextField
-            onChange={(e) => setPassword(e.target.value)}
-            label="Password"
-            placeholder="Enter password"
-            type="password"
-            fullWidth
-            required
-          />
-          <FormControlLabel control={<Checkbox name="checked" color="primary" />} label="Remember me"/>
-          <Link to='/profile'><Button type="submit" variant="contained" onClick={Validate} className={classes.btnstyle}>Signin</Button></Link>
-          <Button type="submit" variant="contained" className={classes.btnstyle}>Login With Google</Button>
-           </FormControl>
-        <Typography>
-          <Link  className={classes.linksStyle} to='/codeEmail'>Forget Password</Link><br/>
-          <Link className={classes.linksStyle} to='/signup'>SignUp Here</Link>
-        </Typography>
-      </Paper>
-    </Grid>
+    <MyContainer
+      loading={false}
+      access={props.access}
+      timeAdded={props.timeAdded}
+      updateLoginData={props.updateLoginData}
+    >
+      <h1>This is user signin screen</h1>
+      <h2>{error}</h2>
+      <Box style={{ width: "100%" }}>
+        <Paper elevation={5} align="center" className={classes.paperStyle}>
+          <Box style={{ margin: "5em" }}>
+            <Avatar className={classes.avatarStyle} />
+            <Typography sx={{ padding: "3em" }} variant="h3">
+              Sign In
+            </Typography>
+
+            <TextField
+              onChange={(e) => setEmail(e.target.value)}
+              label="Username"
+              placeholder="Enter username"
+              fullWidth
+              required
+              style={{ marginBottom: "2em" }}
+            />
+            <TextField
+              onChange={(e) => setPassword(e.target.value)}
+              label="Password"
+              placeholder="Enter password"
+              type="password"
+              fullWidth
+              required
+            />
+            <Box style={{ display: "flex", alignItems: "flex-start" }}>
+              <FormControlLabel
+                control={<Checkbox name="checked" color="primary" />}
+                label="Remember me"
+              />
+            </Box>
+
+            <Typography className={classes.ArrangeBtn} >
+              <Link style={{ textDecoration: "None" }} to="/profile">
+                <Button className={classes.btnstyle} onClick={Validate}>
+                  Signin
+                </Button>
+              </Link>
+              <Link style={{ textDecoration: "None" }} to="/profile">
+                <Button className={classes.btnstyle}>Login With Google</Button>
+              </Link>
+            </Typography>
+            <Typography>
+              <Link className={classes.linksStyle} to="/codeEmail">
+                Forget Password
+              </Link>
+              <br />
+              <Link className={classes.linksStyle} to="/signup">
+                SignUp Here
+              </Link>
+            </Typography>
+          </Box>
+        </Paper>
+      </Box>
     </MyContainer>
-   
-  )
+  );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-      access:state.userReducer.access,
-      timeAdded:state.userReducer.timeAdded
+    access: state.userReducer.access,
+    timeAdded: state.userReducer.timeAdded,
   };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-      updateLoginData: (access,timeAdded) => dispatch(userActions.updateLoginData(access,timeAdded)),
+    updateLoginData: (access, timeAdded) =>
+      dispatch(userActions.updateLoginData(access, timeAdded)),
   };
 };
-export default connect(mapStateToProps,mapDispatchToProps)(SignScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SignScreen);

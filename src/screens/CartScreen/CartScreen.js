@@ -1,13 +1,15 @@
 import { Container } from '@material-ui/core';
 import React from 'react';
+import { connect } from "react-redux";
+import * as userAction from '../../store/actions/userActions/userActions'
 import MyContainer from '../../Components/Container/Container'
 import {Link} from 'react-router-dom' 
 import {useStyles} from "./CartScreenStyle"
 
-const CartScreen = () => {
+const CartScreen = (props) => {
   const classes = useStyles();
   return(
-    <MyContainer>
+    <MyContainer loading={false}  access={props.access} timeAdded={props.timeAdded} updateLoginData={props.updateLoginData}>
      
         <h1>This is Cart Screen</h1>
         <Container>
@@ -19,4 +21,18 @@ const CartScreen = () => {
   ) 
 };
 
-export default CartScreen;
+
+const mapStateToProps = (state) => {
+  return {
+    access: state.userReducer.access,
+    timeAdded: state.userReducer.timeAdded,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateLoginData: (access, timeAdded) =>
+      dispatch(userAction.updateLoginData(access, timeAdded)),
+  };
+};
+export default connect(mapStateToProps,mapDispatchToProps)(CartScreen);

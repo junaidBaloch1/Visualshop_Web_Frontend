@@ -11,29 +11,28 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     fontFamily: "Helvetica Neue",
     fontWeight: "bold",
-    color: "black",
+    color: "black", 
+    width:"100%",
     
-
-    "&:hover": {
-      fontSize: "34.5px",
-      
      
-    },
   },
   link: {
     textDecoration: "none",
     color: "black",
     fontSize: "26px",
-    marginLeft: theme.spacing(20),
+    alignItems:"center",
+    marginLeft: theme.spacing(15),
+    fontFamily: "Helvetica Neue",
+  
     "&:hover": {
       borderBottom: "3px solid black",
-      fontFamily: "Helvetica Neue",
+      
     },
   },
   AppColor: {
     backgroundColor: "#ff9100",
     height: "90px",
-    padding: "12px 8px",
+    padding: "0.8em ",
   },
  
   buttonstyle: {
@@ -41,6 +40,11 @@ const useStyles = makeStyles((theme) => ({
     float: "right",
     padding: "1em",
   },
+  Container :{
+    marginRight:"11em",   
+    display:"flex",
+    justifyContent:"flex-end"
+  }
  
 }));
 

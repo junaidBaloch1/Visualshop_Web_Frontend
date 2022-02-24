@@ -1,10 +1,9 @@
 import React from 'react';
-import Navbar from "../../../Components/Navbar/Navbar.js"
+import { connect } from "react-redux";
 import { useStyles } from './UserinfoScreenStyle';
 import {Link} from "react-router-dom"
 import { Container } from '@material-ui/core';
 import * as userActions from '../../../store/actions/userActions/userActions'
-import { connect } from 'react-redux';
 import MyContainer from '../../../Components/Container/Container'
 
 const UserinfoScreen = (props) => {
@@ -20,7 +19,7 @@ const UserinfoScreen = (props) => {
  
   return(
   
-    <MyContainer>
+    <MyContainer loading={false}  access={props.access} timeAdded={props.timeAdded} updateLoginData={props.updateLoginData}>
       
         <h1>This is user personal info screen</h1>
         <Container>
