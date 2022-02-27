@@ -6,8 +6,8 @@ import { useState } from "react";
 import * as userAction from "./store/actions/userActions/userActions";
 import SignScreen from "./screens/SigninScreen/SignScreen/SignScreen";
 import CodeEmailScreen from "./screens/SigninScreen/ResetPassScreen/CodeEmailScreen/CodeEmailScreen.js";
-import CodeVerifyScreen from "./screens/SigninScreen/ResetPassScreen/CodeVerifyScreen/CodeVerifyScreen.js";
-import ResetPassScreen from "./screens/SigninScreen/ResetPassScreen/ResetPassScreen/ResetPassScreen.js";
+import CodeVerificationScreen from "./screens/SigninScreen/ResetPassScreen/CodeVerificationScreen/CodeVerificationScreen";
+// import ResetPassScreen from "./screens/SigninScreen/ResetPassScreen/ResetPassScreen/ResetPassScreen.js";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 import AboutUs from "./screens/AboutUsScreen/AboutUsScreen";
 import CartScreen from "./screens/CartScreen/CartScreen";
@@ -34,7 +34,7 @@ const App = (props) => {
   }, []);
 
   const isLoggedin = () => {
-    console.log("App js is loggedin render")
+   
     const date = new Date();
     if (props.access == null) return false;
     const timeDiff = diff_minutes(date.getTime(), props.timeAdded);
@@ -49,16 +49,16 @@ const App = (props) => {
         <Routes>
         
         <Route path="/" element={<HomeScreen />} exact />
-       
+   
        <Route path='/about' element={<AboutUs />} />
        <Route path='/cart' element={<CartScreen />} />
        <Route path={`/product`} element={<ProductScreen />} />
 
        {isLogin?<Route path='/signin' element={<UserinfoScreen />} />:<Route path='/signin' element={<SignScreen />} />}
        {isLogin?<Route path='/profile' element={<UserinfoScreen />} />:<Route path='/signup' element={<RegisterScreen />} />}
-       {isLogin?<Route path='/codeEmail' element={<ResetPassScreen />} />:<Route path='/codeEmail' element={<CodeEmailScreen />} />}
-       {isLogin?<Route path='/codeverification' element={<ResetPassScreen />} />:<Route path='/codeverification' element={<CodeVerifyScreen />} />}
-       {isLogin?<Route path='/resetPassword' element={<UserinfoScreen />} />:<Route path='/resetPassword' element={<ResetPassScreen />} />}
+       {isLogin?<Route path='/codeEmail' element={<UserinfoScreen />} />:<Route path='/codeEmail' element={<CodeEmailScreen />} />}
+       {isLogin?<Route path='/codeverification' element={<UserinfoScreen />} />:<Route path='/codeverification' element={<CodeVerificationScreen />} />}
+       {/* {isLogin?<Route path='/resetPassword' element={<UserinfoScreen />} />:<Route path='/resetPassword' element={<ResetPassScreen />} />} */}
 
        {isLogin?<Route path='/profile' element={<UserinfoScreen />} />:<Route path='/profile' element={<SignScreen />} />}
        {isLogin?<Route path='/complaint' element={<ComplaintScreen />} />:<Route path='/complaint' element={<SignScreen />} />}
@@ -76,16 +76,18 @@ const App = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    access: state.userReducer.access,
-    timeAdded: state.userReducer.timeAdded,
+    access: state.Update_Login_reducer.access,
+    timeAdded: state.Update_Login_reducer.timeAdded,
+    
   };
 };
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateLoginData: (access, timeAdded) =>
-      dispatch(userActions.updateLoginData(access, timeAdded)),
+    updateLoginData: (access, timeAdded) =>{
+      dispatch(userActions.updateLoginData(access, timeAdded))
+
+    },
+   
   };
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(App);

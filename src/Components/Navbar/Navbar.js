@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Button,
+  Avatar,
   Toolbar,
   CssBaseline,
   Typography,
@@ -15,7 +16,7 @@ import CloseSharpIcon from "@mui/icons-material/CloseSharp";
 import TemporaryDrawer from './DrawerComponent'
 
 
-const Navbar = () => {
+const Navbar = (props) => {
   const classes = useStyles();
 
    let theme = useTheme();
@@ -44,10 +45,14 @@ const Navbar = () => {
             Cart
           </Link>
          
-            <Link to="/signin" className={classes.link}>
+            {props.access ? 
+            <Link to="/profile" className={classes.profile}>
+             <Avatar className={classes.avatarStyle} />
+          </Link>
+            :<Link to="/signin" className={classes.link}>
               Join
             </Link>
-
+            }
         </Container>
      
         }

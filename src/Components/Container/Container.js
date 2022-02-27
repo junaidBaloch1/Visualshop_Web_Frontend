@@ -6,9 +6,7 @@ import {Modal, useTheme,useMediaQuery} from '@material-ui/core'
 
 const Container = (props) => {
 
-   let theme = useTheme();
-   let isMatch = useMediaQuery(theme.breakpoints.down('sm'));
-
+  
     // if (props.access != null)
     // {
     //     console.log(" container is checking")
@@ -21,7 +19,7 @@ const Container = (props) => {
     // }
   return (
  <div>
-        <Navbar />
+        <Navbar access={props.access} />
         <Makemodal  open={props.loading}/>
         {props.children}
         

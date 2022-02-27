@@ -2,6 +2,9 @@
 
 # dependencies
 /node_modules
+# here is client id 
+/config.js
+
 /.pnp
 .pnp.js
 

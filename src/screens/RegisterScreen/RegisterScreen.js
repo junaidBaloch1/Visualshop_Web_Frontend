@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as userAction from "../../store/actions/userActions/userActions";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { CardMedia, Card } from "@material-ui/core";
 import {
@@ -17,19 +17,51 @@ import {
 import MyContainer from "../../Components/Container/Container";
 import {
   UserSignupHandler,
+  GoogleAuthHandler,
   ValidateEmail,
 } from "../../APIFunctionsFolder/APIFunctionsFile";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
+import { CLIENT_ID } from "../../config";
 
 import { useStyles } from "./RegisterScreenStyle";
 
 const RegisterScreen = (props) => {
   const classes = useStyles();
+  const clientId = CLIENT_ID;
+  const date = new Date();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
+   
+  const onLoginSuccess = async (res) => {
+    const GOOGLE_AUTH_DATA = res.tokenObj;
+    setLoading(true)
+    console.log(GOOGLE_AUTH_DATA.access_token);
+    // <------------------------------------------------->
+    const response = await GoogleAuthHandler(GOOGLE_AUTH_DATA.access_token);
+    console.log(response);
+    if (response.status == 200) {
+      const LOGIN_INFO = {
+        access: response.data.access,
+        time: date.getTime(),
+      };
+      setLoading(false);
+      navigate("/profile");
+      //store data in local storage and redux
+      props.updateLoginData(response.data.access, date.getTime());
+      localStorage.setItem("LOGIN_INFO", JSON.stringify(LOGIN_INFO));
+    } else {
+      setError(response.data);
+      setLoading(false);
+    }
+  }
+  const onLoginFailure = (res) => {
+    console.log("Login Failed:", res);
+    alert("Login Failed try later")
+  };
   const Validate = () => {
     if (!ValidateEmail(email)) {
       setError("Please enter valid Email");
@@ -40,10 +72,12 @@ const RegisterScreen = (props) => {
       return false;
     }
     UserSignUp();
+
+    
   };
 
   const UserSignUp = async () => {
-    // setLoading(true);
+     setLoading(true);
     const date = new Date();
     const response = await UserSignupHandler(email, password);
 
@@ -54,26 +88,29 @@ const RegisterScreen = (props) => {
       };
       // console.log(LOGIN_INFO);
       setLoading(false);
+      navigate('/profile');
       //store data in local storage and redux
       props.updateLoginData(response.data.access, date.getTime());
 
       localStorage.setItem("LOGIN_INFO", JSON.stringify(LOGIN_INFO));
-    } else {
+    } 
+    else 
+    {
       setError(response.data);
-      // setLoading(false);
-      // console.log(response.data);
+       setLoading(false);
+      
     }
   };
 
   return (
     <MyContainer
-      loading={false}
+      loading={loading}
       access={props.access}
       timeAdded={props.timeAdded}
       updateLoginData={props.updateLoginData}
     >
       <h1>This is user register signup screen </h1>
-      <h2>{error}</h2>
+    
      
       <Box >
         <Paper elevation={5} align="center" className={classes.paperStyle}>
@@ -92,13 +129,13 @@ const RegisterScreen = (props) => {
               <Typography style={{ color:"Black" }} variant="h3">
                 Sign Up
               </Typography>
+              <Typography style={{padding:"1em",color:"red"}} variant="h5">{error}</Typography>
 
               <TextField
                 onChange={(e) => setEmail(e.target.value)}
-                label="Username"
-                placeholder="Enter username"
+                label="email"
+                placeholder="Enter email"
                 fullWidth
-                required
                 style={{ marginBottom: "2em" }}
               />
               <TextField
@@ -107,7 +144,6 @@ const RegisterScreen = (props) => {
                 placeholder="Enter password"
                 type="password"
                 fullWidth
-                required
               />
               <Box style={{ display:"flex",alignItems:'flex-start' }}>
                 <FormControlLabel
@@ -117,17 +153,23 @@ const RegisterScreen = (props) => {
               </Box>
 
               <Typography className={classes.ArrangeBtn} >
-                <Link style={{ textDecoration: "None" }} to="/profile">
+          
                   <Button className={classes.btnstyle} onClick={Validate}>
                     SignUp
                   </Button>
-                </Link>
-                <Link style={{ textDecoration: "None" }} to="/profile">
-                  <Button className={classes.btnstyle}>
-                    signUp With Google
-                  </Button>
-                </Link>
               </Typography>
+              <GoogleLogin
+                clientId={clientId}
+                // buttonText="Sign In with Google"
+                render={renderProps => (
+                  <Button className={classes.btnstyle} onClick={renderProps.onClick} disabled={renderProps.disabled}>Sign up with Google</Button>
+                )}
+                onSuccess={onLoginSuccess}
+                onFailure={onLoginFailure}
+                cookiePolicy={"single_host_origin"}
+                isSignedIn={false}
+               
+              />
               
               <Typography>
                 <Link className={classes.linksStyle} to="/signin">
@@ -144,8 +186,8 @@ const RegisterScreen = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    access: state.userReducer.access,
-    timeAdded: state.userReducer.timeAdded,
+    access: state.Update_Login_reducer.access,
+    timeAdded: state.Update_Login_reducer.timeAdded,
   };
 };
 

@@ -14,8 +14,8 @@ const  AboutUsScreen = (props) => {
 }
 const mapStateToProps = (state) => {
   return {
-    access: state.userReducer.access,
-    timeAdded: state.userReducer.timeAdded,
+    access: state.Update_Login_reducer.access,
+    timeAdded: state.Update_Login_reducer.timeAdded,
   };
 };
 

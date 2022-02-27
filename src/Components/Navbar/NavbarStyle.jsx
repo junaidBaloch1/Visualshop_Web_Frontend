@@ -16,6 +16,12 @@ const useStyles = makeStyles((theme) => ({
     
      
   },
+  avatarStyle: {
+    backgroundColor: "#442c2e",
+    height: "2em",
+    width: "2em",
+   
+  },
   link: {
     textDecoration: "none",
     color: "black",
@@ -28,6 +34,16 @@ const useStyles = makeStyles((theme) => ({
       borderBottom: "3px solid black",
       
     },
+  },
+  profile: {
+    textDecoration: "none",
+    color: "black",
+    fontSize: "26px",
+    alignItems:"center",
+    marginLeft: theme.spacing(15),
+    fontFamily: "Helvetica Neue",
+  
+    
   },
   AppColor: {
     backgroundColor: "#ff9100",

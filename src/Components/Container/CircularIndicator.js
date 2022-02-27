@@ -1,11 +1,13 @@
 import * as React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import {useStyles} from './CircularIndicatorStyle'
 
 const CircularIndicator = () => {
+  const classes = useStyles();
     return (
-      <Box sx={{ display: 'flex' }}>
-        <CircularProgress style={{color:"#ff9100",size:"5em 5em", margin:"30em 70em"}} />
+      <Box className={classes.Circle}>
+        <CircularProgress style={{color:"#ff9100",width:"6em",}} />
       </Box>
     );
   }
