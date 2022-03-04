@@ -7,7 +7,6 @@ import * as userAction from "./store/actions/userActions/userActions";
 import SignScreen from "./screens/SigninScreen/SignScreen/SignScreen";
 import CodeEmailScreen from "./screens/SigninScreen/ResetPassScreen/CodeEmailScreen/CodeEmailScreen.js";
 import CodeVerificationScreen from "./screens/SigninScreen/ResetPassScreen/CodeVerificationScreen/CodeVerificationScreen";
-// import ResetPassScreen from "./screens/SigninScreen/ResetPassScreen/ResetPassScreen/ResetPassScreen.js";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 import AboutUs from "./screens/AboutUsScreen/AboutUsScreen";
 import CartScreen from "./screens/CartScreen/CartScreen";
@@ -27,9 +26,10 @@ const App = (props) => {
   useEffect(async () => {
     const USER_LOGIN_INFO = JSON.parse(localStorage.getItem("LOGIN_INFO"));
       if (!(USER_LOGIN_INFO==null)) {
-      props.updateLoginData(USER_LOGIN_INFO.access, USER_LOGIN_INFO.time);
+      // props.updateLoginData(USER_LOGIN_INFO.access, USER_LOGIN_INFO.time);
+      props.Update_Login_action(USER_LOGIN_INFO.access, USER_LOGIN_INFO.time)
     } else {
-      props.updateLoginData(null,null);
+      props.Update_Login_action(null,null);
     }
   }, []);
 
@@ -83,8 +83,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateLoginData: (access, timeAdded) =>{
-      dispatch(userActions.updateLoginData(access, timeAdded))
+    Update_Login_action: (access, timeAdded) =>{
+      dispatch(userActions.Update_Login_action(access, timeAdded))
 
     },
    

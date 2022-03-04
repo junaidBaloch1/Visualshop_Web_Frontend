@@ -2,7 +2,7 @@ import React from 'react'
 import { diff_minutes } from "../../APIFunctionsFolder/APIFunctionsFile";
 import Navbar from '../Navbar/Navbar'
 import Makemodal from './Makemodal';
-import {Modal, useTheme,useMediaQuery} from '@material-ui/core'
+import Footer from '../Footer/Footer'
 
 const Container = (props) => {
 
@@ -21,7 +21,9 @@ const Container = (props) => {
  <div>
         <Navbar access={props.access} />
         <Makemodal  open={props.loading}/>
+       
         {props.children}
+        <Footer/>
         
   </div>
   )

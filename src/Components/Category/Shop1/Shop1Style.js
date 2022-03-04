@@ -2,6 +2,14 @@ import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { padding } from "@mui/system";
 const useStyles = makeStyles((theme) =>
   createStyles({
+    alignStyle:{
+
+       display:"flex",
+        justifyContent:"space-around",
+      alignItems:"center",
+       width:"60%",
+      //  border:"3px solid black",
+    },
     Button: {
       textAlign: "center",
       margin: "1em",

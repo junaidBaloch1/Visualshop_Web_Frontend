@@ -42,7 +42,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-      updateLoginData: (access,timeAdded) => dispatch(userActions.updateLoginData(access,timeAdded)),
+      updateLoginData: (access,timeAdded) => dispatch(userActions.Update_Login_action(access,timeAdded)),
   };
 };
 export default connect(mapStateToProps,mapDispatchToProps)(UserinfoScreen);

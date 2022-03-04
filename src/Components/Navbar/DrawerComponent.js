@@ -43,7 +43,7 @@ const DrawerComponent = () => {
     <div>
       {['right'].map((anchor) => (
         <Box key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}><MenuIcon style={{color:"black"}} fontSize='large'/></Button>
+          <Button onClick={toggleDrawer(anchor, true)}><MenuIcon style={{color:"white"}} fontSize='large'/></Button>
 
          
           <Drawer

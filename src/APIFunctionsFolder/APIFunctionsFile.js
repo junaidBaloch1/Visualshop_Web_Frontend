@@ -299,6 +299,45 @@ const diff_minutes = (t2, t1) => {
   diff /= 60;
   return Math.abs(Math.round(diff));
 };
+  
+// <------------------------------------------Product -------------------------------------------->
+const GetProductHandler = async (count) => {
+
+  try {
+    const response = await Axios.get(
+      `https://visualshopp.herokuapp.com/api/shop/products/?page=${count}`
+     
+    );
+
+    return {
+      data: response.data,
+      status: response.status,
+    };
+  } catch (error) {
+    if (error.message === "Network Error") {
+      return {
+        data: "Please try again Your INTERNET DISCONNECTED !!",
+        status: null,
+      };
+    }
+    else if (error.response.status === 404) {
+      // Unauthorize
+      return {
+        data: error.response.data.detail,
+        status: error.response.status,
+      };
+    }
+    else {
+      return {
+        data: "Something went wrong please try later!",
+        status: error.response.status,
+      };
+    }  
+   
+ 
+  }
+};
+  
 
 export {
   UserLoginHandler,
@@ -308,4 +347,6 @@ export {
   GoogleAuthHandler,
   ValidateEmail,
   diff_minutes,
+  GetProductHandler,
+
 };

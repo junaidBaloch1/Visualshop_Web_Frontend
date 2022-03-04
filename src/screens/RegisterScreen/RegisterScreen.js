@@ -38,7 +38,7 @@ const RegisterScreen = (props) => {
    
   const onLoginSuccess = async (res) => {
     const GOOGLE_AUTH_DATA = res.tokenObj;
-    setLoading(true)
+    setLoading(true);
     console.log(GOOGLE_AUTH_DATA.access_token);
     // <------------------------------------------------->
     const response = await GoogleAuthHandler(GOOGLE_AUTH_DATA.access_token);
@@ -160,7 +160,7 @@ const RegisterScreen = (props) => {
               </Typography>
               <GoogleLogin
                 clientId={clientId}
-                // buttonText="Sign In with Google"
+                buttonText="Sign In with Google"
                 render={renderProps => (
                   <Button className={classes.btnstyle} onClick={renderProps.onClick} disabled={renderProps.disabled}>Sign up with Google</Button>
                 )}
@@ -194,7 +194,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateLoginData: (access, timeAdded) =>
-      dispatch(userAction.updateLoginData(access, timeAdded)),
+      dispatch(userAction.Update_Login_action(access, timeAdded)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);

@@ -1,4 +1,4 @@
-import {UPDATE_LOGIN_DATA,USER_GOOGLE_AUTH} from '../../constants/userConstants/userConstants'
+import {UPDATE_LOGIN_DATA} from '../../constants/userConstants/userConstants'
 // States
 const initialState = {
     access:null,
@@ -6,7 +6,7 @@ const initialState = {
 
 };
 
-const updateLoginData=(state,action)=>{
+const updateData=(state,action)=>{
     const newData={
         access:action.access,
         timeAdded:action.timeAdded
@@ -21,7 +21,7 @@ const updateLoginData=(state,action)=>{
 
 export const Update_Login_reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
-        case UPDATE_LOGIN_DATA: return updateLoginData(state, action);
+        case UPDATE_LOGIN_DATA: return updateData(state, action);
         default:
             return state;
     }

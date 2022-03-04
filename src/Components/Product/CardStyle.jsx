@@ -9,9 +9,9 @@ const useStyles = makeStyles((theme) =>
       "&:hover": {
         boxShadow: "0px 0px 8px 5px #442C2E",
         // backgroundColor: "#b37924",
-        backgroundColor: "#a86032",
+        // backgroundColor: "#a86032",
 
-        height: "50.3em",
+        // height: "50.3em",
       },
     },
   })

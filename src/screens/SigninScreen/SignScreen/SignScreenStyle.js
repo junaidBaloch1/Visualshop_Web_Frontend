@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) =>
         },
        
         [theme.breakpoints.down('md')]: {
-          //  backgroundColor: theme.palette.primary.main,
+            // backgroundColor: theme.palette.primary.main,
           width:"80%",
         
         },
       
          margin: "0em auto",
-         padding:"2em",
+        //  padding:"2em",
         
       },
 

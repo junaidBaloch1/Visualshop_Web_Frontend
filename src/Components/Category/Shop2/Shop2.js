@@ -1,7 +1,7 @@
 import React from "react";
 import CardMedia from "@mui/material/CardMedia";
 import { Button, Card, IconButton, Typography } from "@material-ui/core";
-import { useStyles } from "./Shop2Style.jsx";
+import { useStyles } from "./Shop2Style";
 const Shop = ({ Items }) => {
   const classes = useStyles();
   return (

@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme) =>
         fontSize: "22px",
         fontFamily: "Helvetica Neue",
         marginTop: "1em",
+    },
+    StyleProduct:{
+       width:"80%",
+       margin: " 2em auto",
     }
 })
 );

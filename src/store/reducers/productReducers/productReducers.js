@@ -4,10 +4,10 @@ const initialState = {
     products:null,
 }
 
-const getProductData = (state, action) => {
+export const getProductData = (state, action) => {
 
     const newData = {
-      product : action.products
+      products : action.products
     }
 
     return {
@@ -17,3 +17,12 @@ const getProductData = (state, action) => {
 
     }
 }
+
+export const get_all_product_reducer = (state = initialState, action ) =>{
+
+    switch ( action.type ) {
+        case GET_ALL_PRODUCTS: return getProductData(state, action);
+        default:
+            return state;
+    }
+} 

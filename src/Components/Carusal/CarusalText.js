@@ -2,7 +2,7 @@ const SliderText = [
   {
     id: "1",
     Title: "FREE SHIPPING WORLDWIDE",
-    subTitle: "On order over RS. 5000",
+    subTitle: "On order over $200",
     image: "/Images/aeroplane.PNG",
   },
   {

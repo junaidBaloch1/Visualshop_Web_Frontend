@@ -22,7 +22,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateLoginData: (access, timeAdded) =>
-      dispatch(userAction.updateLoginData(access, timeAdded)),
+      dispatch(userAction.Update_Login_action(access, timeAdded)),
   };
 };
 export default connect(mapStateToProps,mapDispatchToProps)(AboutUsScreen);

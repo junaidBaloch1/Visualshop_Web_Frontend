@@ -147,7 +147,7 @@ const SignScreen = (props) => {
            
               <GoogleLogin
                 clientId={clientId}
-                // buttonText="Sign In with Google"
+                buttonText="Sign In with Google"
                 render={renderProps => (
                   <Button className={classes.btnstyle} onClick={renderProps.onClick} disabled={renderProps.disabled}>Sign In with Google</Button>
                 )}
@@ -184,7 +184,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateLoginData: (access, timeAdded) => {
-      dispatch(userActions.updateLoginData(access, timeAdded));
+      dispatch(userActions.Update_Login_action(access, timeAdded));
     },
   };
 };

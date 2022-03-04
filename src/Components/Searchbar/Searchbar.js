@@ -7,7 +7,7 @@ import { faCamera, faSearch } from "@fortawesome/free-solid-svg-icons";
 const Searchbar = () => {
   const classes = useStyles();
   return (
-    <div>
+    <Box>
       <Container className={classes.title}>
         <Typography
           style={{ marginRight: "0.8em", fontWeight: "bold", padding: "0.1em" }}
@@ -27,20 +27,20 @@ const Searchbar = () => {
       </Container>
       <Container maxWidth="lg">
         <Box sx={{ borderRadius: "16px" }} className={classes.bar}>
-          <div>
+          <Box>
             <FontAwesomeIcon className={classes.SearchIcon} icon={faSearch} />
             <InputBase
               className={classes.inputfield}
               placeholder="search by text.."
             />
-          </div>
+          </Box>
           <FontAwesomeIcon className={classes.cameraIcon} icon={faCamera} />
         </Box>
       </Container>
       <Typography variant="h4" className={classes.title2}>
         Latest Products..
       </Typography>
-    </div>
+    </Box>
   );
 };
 
