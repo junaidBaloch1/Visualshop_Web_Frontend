@@ -10,9 +10,9 @@ const Footer = () => {
   const classes = useStyles();
   return (
     <footer>
-      <Box className={classes.box}>
-        <Container className={classes.container} width="lg">
-          <Grid container>
+      <Box className={classes.box} >
+        <Container  className={classes.container} >
+          <Grid className={classes.breakpoint} container>
             <Grid item sm={12} md={6} lg={4} xl={3}>
               <Box className={classes.headerbox}>Get to Know Us</Box>
               <Box mt={2}>

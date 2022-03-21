@@ -25,14 +25,8 @@ const useStyles = makeStyles((theme) =>
         
       },
 
-      // paperStyle: {
-      //   padding: "1em",
-      //   width: "50%",
-        
-      //   margin: "0em auto",
-      //   // backgroundColor:"#ff9100",
-      //   borderRadius: "2em",
-      // },
+     
+  
 
       avatarStyle: {
         backgroundColor: "#442c2e",
@@ -47,7 +41,7 @@ const useStyles = makeStyles((theme) =>
         margin: "8px 0",
         backgroundColor: "#442c2e",
         color: "white",
-        width:"12em",
+        width:"13em",
        
         fontSize: "21px",
         "&:hover": {
@@ -55,9 +49,7 @@ const useStyles = makeStyles((theme) =>
           backgroundColor: "white",
       },
       formStyle: {
-       // margin: "0em 8em",
-       // padding: "0em 2em",
-        // fontSize: "21px",
+      
         alignItems:"center"
         },
       },
@@ -76,16 +68,7 @@ const useStyles = makeStyles((theme) =>
         flexDirection: "column",
       
     },
-      // buttonstyle: {
-      //   color: "blue",
-      //   fontSize: "22px",
-      //   textTransform: "capitalize",
-      //   textDecoration: "underline",
-      //   "&:hover": {
-      //     backgroundColor: "white",
-      //     textDecoration: "underline",
-      //   },
-      // },
+     
     })
     );
     export { useStyles };

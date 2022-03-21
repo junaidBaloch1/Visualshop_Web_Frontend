@@ -48,13 +48,13 @@ const App = (props) => {
       <Router>
         <Routes>
         
-        <Route path="/" element={<HomeScreen />} exact />
+        <Route path="/" element={<HomeScreen  />} exact />
    
        <Route path='/about' element={<AboutUs />} />
        <Route path='/cart' element={<CartScreen />} />
-       <Route path={`/product`} element={<ProductScreen />} />
+       <Route path={`/product/:id`} element={<ProductScreen />} />
 
-       {isLogin?<Route path='/signin' element={<UserinfoScreen />} />:<Route path='/signin' element={<SignScreen />} />}
+       {isLogin?<Route path='/signin' element={<HomeScreen />} />:<Route path='/signin' element={<SignScreen />} />}
        {isLogin?<Route path='/profile' element={<UserinfoScreen />} />:<Route path='/signup' element={<RegisterScreen />} />}
        {isLogin?<Route path='/codeEmail' element={<UserinfoScreen />} />:<Route path='/codeEmail' element={<CodeEmailScreen />} />}
        {isLogin?<Route path='/codeverification' element={<UserinfoScreen />} />:<Route path='/codeverification' element={<CodeVerificationScreen />} />}

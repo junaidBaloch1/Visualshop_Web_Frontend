@@ -25,7 +25,61 @@ const useStyles = makeStyles((theme) =>
         fontSize: "22px",
         fontFamily: "Helvetica Neue",
         marginTop: "1em",
+    },
+
+    headerbox:{
+        display:'flex',
+        justifyContent:'space-between',
+        width:'80%',
+        backgroundColor:'#5e35b1',
+        padding:"1em",
+        margin:"1em",
+        
+
+    },
+    headertitle:{
+        fontSize: "24px",
+        fontFamily: "Helvetica Neue",
+        // fontWeight: "bold", 
+        textTransform:"uppercase",
+        color:'white',
+    },
+    quantity:{
+        fontSize: "24px",
+        fontFamily: "Helvetica Neue",
+        // fontWeight: "bold", 
+        textTransform:"uppercase",
+        color:'black',
+    },
+    totalprice:{
+        fontSize: "24px",
+        fontFamily: "Helvetica Neue",
+        // fontWeight: "bold", 
+        textTransform:"uppercase",
+        color:'black',
+        marginTop:"1em",
+    },
+    productbox:{
+        display:'flex',
+        justifyContent:'space-between',
+        width:'80%',
+        
+
+    },
+    btnsymbol:{
+        fontSize: "22px",
+        fontFamily: "Helvetica Neue",
+        fontWeight:"bolder",
+    },
+    qtybox:{
+       textAlign:"center",
+       marginTop:"1em", 
+       marginRight:"18em",
+       border:"2px solid black", 
+       display:'flex',
     }
+
+
 })
 );
 export { useStyles };

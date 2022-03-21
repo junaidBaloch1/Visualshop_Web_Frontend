@@ -1,46 +1,60 @@
-import React from "react";
-import { Typography, Box, Container, InputBase } from "@material-ui/core";
+import React, { useState } from "react";
+import { Typography, Box, Button, Modal, InputBase } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 import { useStyles } from "./SearchbarStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const Searchbar = () => {
+
+const Searchbar = ({ filter }) => {
   const classes = useStyles();
+
+  const [inputText, setInputText] = useState("");
+  const inputHandler = (e) => {
+    //convert input text to lower case
+    var lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  };
+
+
   return (
-    <Box>
-      <Container className={classes.title}>
-        <Typography
-          style={{ marginRight: "0.8em", fontWeight: "bold", padding: "0.1em" }}
-          variant="h3"
-          className="MuiTypography-alignCenter "
-        >
-          Shop Your designer Dresses
-        </Typography>
-        <Typography
-          variant="h4"
-          style={{ color: "black" }}
-          className="MuiTypography-alignCenter "
-        >
-          Ready to wear dresses tailored for you online. Hurry up while stock
-          lasts.
-        </Typography>
-      </Container>
-      <Container maxWidth="lg">
-        <Box sx={{ borderRadius: "16px" }} className={classes.bar}>
-          <Box>
-            <FontAwesomeIcon className={classes.SearchIcon} icon={faSearch} />
-            <InputBase
-              className={classes.inputfield}
-              placeholder="search by text.."
-            />
-          </Box>
-          <FontAwesomeIcon className={classes.cameraIcon} icon={faCamera} />
+
+    <Box className={classes.align}>
+      <Box className={classes.container}>
+
+        <Box className={classes.bar}>
+          <FontAwesomeIcon className={classes.SearchIcon} icon={faSearch} />
+          <InputBase
+            className={classes.inputfield}
+            placeholder="search by text.."
+            onChange={inputHandler}
+            id="outlined-basic"
+            variant="outlined"
+             fullWidth
+           
+          />
+
         </Box>
-      </Container>
-      <Typography variant="h4" className={classes.title2}>
-        Latest Products..
-      </Typography>
+
+
+        
+          <Button onClick={() => filter(inputText)} className={classes.edgBtn}>Search</Button>
+        
+      </Box>
+      
+
+        <Box className={classes.searchImg}>
+          <Button className={classes.cameraIcon}  ><FontAwesomeIcon icon={faCamera} /></Button>
+          <Typography style={{padding:"0.3em"}} variant="h5">search by image..</Typography>
+        </Box>
+
+
+    
+
+
     </Box>
+
+
   );
 };
 

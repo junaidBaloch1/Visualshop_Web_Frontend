@@ -1,84 +1,4 @@
-// import React from "react";
-// import PropTypes from "prop-types";
-// import StarHalfIcon from "@mui/icons-material/StarHalf";
-// import StarRateIcon from "@mui/icons-material/StarRate";
 
-// const Rating = ({ value, text, color }) => {
-//   return (
-//     <div>
-//       <span>
-//         <i style={{ color }}>
-//           {" "}
-//           {value > 1 ? (
-//             <StarRateIcon />
-//           ) : value > 0.5 ? (
-//             <StarHalfIcon />
-//           ) : (
-//             <StarRateIcon />
-//           )}
-//         </i>
-//       </span>
-//       <span>
-//         <i style={{ color }}>
-//           {" "}
-//           {value > 2 ? (
-//             <StarRateIcon />
-//           ) : value > 1.5 ? (
-//             <StarHalfIcon />
-//           ) : (
-//             <StarRateIcon />
-//           )}
-//         </i>
-//       </span>
-//       <span>
-//         <i style={{ color }}>
-//           {" "}
-//           {value > 3 ? (
-//             <StarRateIcon />
-//           ) : value > 2.5 ? (
-//             <StarHalfIcon />
-//           ) : (
-//             <StarRateIcon />
-//           )}
-//         </i>
-//       </span>
-//       <span>
-//         <i style={{ color }}>
-//           {" "}
-//           {value > 4 ? (
-//             <StarRateIcon />
-//           ) : value > 3.5 ? (
-//             <StarHalfIcon />
-//           ) : (
-//             <StarRateIcon />
-//           )}
-//         </i>
-//       </span>
-//       <span>
-//         <i style={{ color }}>
-//           {" "}
-//           {value >= 5 ? (
-//             <StarRateIcon />
-//           ) : value > 4.5 ? (
-//             <StarHalfIcon />
-//           ) : (
-//             <StarRateIcon />
-//           )}
-//         </i>
-//       </span>
-//       {/* <span>{text ? text : ''}</span> */}
-//       <span>{text && text}</span>
-//     </div>
-//   );
-// };
-// Rating.defaultProps = {
-//   color: "yellow",
-// };
-// Rating.propTypes = {
-//   value: PropTypes.number,
-//   text: PropTypes.string,
-//   color: PropTypes.string,
-// };
 
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -121,7 +41,7 @@ const TextRating = ({ value, text }) => {
           precision={0.5}
           emptyIcon={
             <StarIcon
-              style={{ color: "white", opacity: 1.0 }}
+              style={{ color: "gray", opacity: 1.0 }}
               fontSize="inherit"
             />
           }

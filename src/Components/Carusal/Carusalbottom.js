@@ -1,19 +1,17 @@
 import React from "react";
 import {
-  Container,
   Card,
-  Typography,
   CardHeader,
   Avatar,
+  Box,
 } from "@material-ui/core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faPlane } from "@fortawesome/free-solid-svg-icons";
+import texts from './CarusalText'
 import { useStyles } from "./CarusalbottomStyle";
 
 const Carusalbottom = ({ texts }) => {
   const classes = useStyles();
   return (
-    <div className={classes.container}>
+    <Box className={classes.container}>
       <Card className={classes.card}>
         <CardHeader
           avatar={
@@ -31,12 +29,14 @@ const Carusalbottom = ({ texts }) => {
           titleTypographyProps={{
             variant: "h4",
           }}
+          
           title={texts.Title}
           subheaderTypographyProps={{ variant: "h5", color: "inherit" }}
           subheader={texts.subTitle}
         />
       </Card>
-    </div>
+      
+    </Box>
   );
 };
 

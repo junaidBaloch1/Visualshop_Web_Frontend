@@ -7,7 +7,7 @@ const CircularIndicator = () => {
   const classes = useStyles();
     return (
       <Box className={classes.Circle}>
-        <CircularProgress style={{color:"#ff9100",width:"6em",}} />
+        <CircularProgress style={{color:"white",width:"6em",}} />
       </Box>
     );
   }

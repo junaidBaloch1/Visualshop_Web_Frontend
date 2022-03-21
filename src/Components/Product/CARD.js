@@ -19,35 +19,12 @@ import { Link } from "react-router-dom";
 import TextRating from "../Rating";
 import { useStyles } from "./CardStyle";
 import AddShoppingCartSharpIcon from "@mui/icons-material/AddShoppingCartSharp";
+import {feedbackCalculator} from '../../APIFunctionsFolder/APIFunctionsFile'
 
 const CARD = ({product}) => {
   const classes = useStyles();
   // console.log(`${product.rating}`);
 
-  const feedbackCalculator = () =>{
-
-    if(product.feedbacks == null || product.feedbacks.length == 0)
-      return 0;
-
-    let Sum = 0;
-    var totalFeedback=0;
-
-    product.feedbacks.map(feedback => {
-        if(feedback.feedback)
-        {
-          Sum = Sum + feedback.feedback.rating
-         var sum = Math.floor(Sum);
-          var Remainder = Sum % 
-          totalFeedback++;
-        }
-    })
-    
-    const review = Sum/(totalFeedback)
-
-     return parseInt(review);
-
-
-}
   
      
 
@@ -84,12 +61,12 @@ const CARD = ({product}) => {
         </CardContent>
         <Box style={{marginTop:"0px"}}>
         <TextRating 
-          value={feedbackCalculator()}
+          value={feedbackCalculator(product.feedbacks)}
           text={`No. of Review (${product.feedbacks.length}) `}
         />
         </Box>
       </Card>
-      <CardButton product={product} />
+      {/* <CardButton product={product} /> */}
     </Box>
   );
 };

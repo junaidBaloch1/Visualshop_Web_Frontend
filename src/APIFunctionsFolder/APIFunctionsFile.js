@@ -337,16 +337,175 @@ const GetProductHandler = async (count) => {
  
   }
 };
+
+
+// <------------------------------------------FilterProductByText -------------------------------------------->
+const FilterProductHandler = async (price,tags,categoryId,subcategoryId,searchText) => {
+
+  try {
+    const response = await Axios.post(
+      "https://visualshopp.herokuapp.com/api/shop/filterProducts", 
+      {
+        price: price,
+        tags: tags,
+        categoryId: categoryId,
+        subcategoryId:subcategoryId,
+        searchText:searchText,
+      }
+     
+    );
+
+    return {
+      data: response.data,
+
+      status: response.status,
+    };
+  } catch (error) {
+    console.log("only error",error);
+    if (error.message === "Network Error") {
+      return {
+        data: "Please try again Your INTERNET DISCONNECTED !!",
+        status: null,
+      };
+    }
+    else if (error.response.status === 404) {
+      // Unauthorize
+      console.log("")
+      return {
+        data: error.response.data.detail,
+        status: error.response.status,
+      };
+    }
+    else {
+      return {
+        data: "Something went wrong please try later!",
+        status: error.response.status,
+      };
+    }  
+   
+ 
+  }
+};
+
+
+// <-----------------------------------------getAllCategories -------------------------------------------->
+const GetCategoriesHandler = async () => {
+
+  try {
+    const response = await Axios.get(
+      'https://visualshopp.herokuapp.com/api/shop/getAllCategories/'
+     
+    );
+
+    return {
+      data: response.data,
+      status: response.status,
+    };
+  } catch (error) {
+    if (error.message === "Network Error") {
+      return {
+        data: "Please try again Your INTERNET DISCONNECTED !!",
+        status: null,
+      };
+    }
+    else if (error.response.status === 404) {
+      // Unauthorize
+      return {
+        data: error.response.data.detail,
+        status: error.response.status,
+      };
+    }
+    else {
+      return {
+        data: "Something went wrong please try later!",
+        status: error.response.status,
+      };
+    }  
+   
+ 
+  }
+};
+//< --------------------------------productDetails ------------------------------------>
+
+const ProductDetailHandler = async (count) => {
+
+  try {
+    const response = await Axios.get(
+      `https://visualshopp.herokuapp.com/api/shop/product/${count}`
+     
+    );
+
+    return {
+      data: response.data,
+      status: response.status,
+    };
+  } catch (error) {
+    if (error.message === "Network Error") {
+      return {
+        data: "Please try again Your INTERNET DISCONNECTED !!",
+        status: null,
+      };
+    }
+    else if (error.response.status === 404) {
+      // Unauthorize
+      return {
+        data: error.response.data.detail,
+        status: error.response.status,
+      };
+    }
+    else {
+      return {
+        data: "Something went wrong please try later!",
+        status: error.response.status,
+      };
+    }  
+   
+ 
+  }
+};
+
+
+// -----------------------------feedcal--------------------------------->
+
+const feedbackCalculator = (feedbacks) =>{
+
+  if(feedbacks == null || feedbacks.length == 0)
+    return 0;
+
+  let Sum = 0;
+  var totalFeedback=0;
+
+  feedbacks.map(feedback => {
+      if(feedback.feedback)
+      {
+        Sum = Sum + feedback.feedback.rating
+      //  var sum = Math.floor(Sum);
+      //   var Remainder = Sum % 
+        totalFeedback++;
+      }
+  })
+  
+  const review = Sum/(totalFeedback)
+
+   return parseInt(review);
+
+
+}
+
   
 
-export {
+export  {
   UserLoginHandler,
   UserSignupHandler,
   UserEmailHandler,
   UserTokenHandler,
   GoogleAuthHandler,
+  FilterProductHandler,
   ValidateEmail,
   diff_minutes,
   GetProductHandler,
+  GetCategoriesHandler,
+  ProductDetailHandler,
+  feedbackCalculator,
 
 };

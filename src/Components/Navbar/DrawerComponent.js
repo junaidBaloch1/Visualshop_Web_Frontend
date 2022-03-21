@@ -74,7 +74,13 @@ const DrawerComponent = () => {
             </ListItem>
             <ListItem  >
               <ListItemIcon ><ExitToAppIcon style={{color:"black"}} fontSize="large"  /></ListItemIcon>
-              <ListItemText><Link to="/signin" className={classes.link}>Join</Link></ListItemText>
+              <ListItemText><Link to="/signin" className={classes.link}>Signin</Link></ListItemText>
+              
+           </ListItem>
+           <ListItem  >
+              <ListItemIcon ><ExitToAppIcon style={{color:"black"}} fontSize="large"  /></ListItemIcon>
+          
+              <ListItemText><Link to="/signup" className={classes.link}>SignUp</Link></ListItemText>
            </ListItem>
      </List>
    </Box>

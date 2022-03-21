@@ -1,73 +1,110 @@
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) =>
   createStyles({
-    title: {
-      cursor: "pointer",
-      color: "black",
-      marginTop: "5%",
-      marginBottom: "2%",
-      // boxShadow:
-      //   "3px 3px 3px 3px #442C2E, 3px 3px 2px 2px red, 3px 3px 2px 2px green",
-      fontFamily: "Arial",
-      Typography: {
-        color: "gold",
-        "&:hover": {
-          fontWeight: "bold",
-        },
-      },
-    },
+   
     bar: {
       width: "100%",
-      height: "50px",
-      marginTop: "20px",
-      border: "3px solid #442C2E",
-      // boxShadow:
-      //   "2px 2px 2px 2px #442C2E, 2px 2px 1px 1px red, 2px 2px 1px 1px green",
-      fontFamily: "Arial",
+      // border: "2px solid #442C2E",
+    
+      fontFamily: "Helvetica Neue",
       fontSize: "26px",
       display: "flex",
-      justifyContent: "space-between",
+      // width:"100%",
+      // justifyContent: "space-between",
+      padding:"0.3em",
+      
+         
     },
     inputfield: {
-      marginLeft: "20px",
+      marginLeft: "10px",
       fontSize: "26px",
-      padding: "1px",
-      //backgroundColor: " #442C2E",
+     
       color: "black",
-      borderRadius: "10px",
-      fontFamily: "Arial",
+      width:"100%",
+      fontFamily: "Helvetica Neue",
+      
+     
+     
+      
     },
     SearchIcon: {
       fontSize: "26px",
       textAlign: "center",
-      marginLeft: "10px",
-      padding: "1px",
       color: "black",
-      "&:hover": {
-        fontSize: "28px",
-      },
+      marginTop:"13px",
+      // padding:"10px",
+      // width:"100%",
+      
     },
     cameraIcon: {
-      fontSize: "32px",
+      fontSize: "30px",
       textAlign: "center",
-      marginRight: "30px",
-      marginTop: "6px",
-      padding: "1px",
+       margin: "0px",
+     
       color: "black",
-      "&:hover": {
-        fontSize: "34px",
-        // color: "green",
-      },
+     
+      
+     
+    },
+    container :{
+      width:"70%",
+      display:"flex",
+      border: "2px solid black",
+      borderRadius:"6px",
+      //  justifyContent:"space-around",
+      // flexDirection:"flex-start",
+      // border:"3px solid green",
+    
+
+    },
+   
+   
+    searchImg:{
+      display:"flex", 
+      border:"2px solid black", 
+      justifyContent:"space-around",
+      borderRadius:"6px",
+      // marginRight:"6px",
+      textAlign:"center",
+     
+      padding:"1em 0em",
+      // height:"4em"
+    },
+   
+    edgBtn:{
+      backgroundColor:"#442c2e",
+      color:"white",
+      // border:"2px solid black",
+     
+      fontFamily:"Helvetica Neue",
+      // border:"3px solid red",
+      fontSize:"20px",
+      padding:"1em",
+      // position:"relative",
+       width:"10em",
+      
+      '&:hover':{
+        color:'black',
+        fontWeight:"bold",
+      }
+
+    },
+    align:{
+      display:"flex",
+      flexDirection:"row",
+       justifyContent:"space-between",
+      alignItems:"center",
+      // padding:"2em",
+      width:"45%",
+      marginLeft:"1%",
+      // marginRight:"3%",
+
+      // border:"3px solid red",
+      
+      
     },
 
-    title2: {
-      marginLeft: "8%",
-      marginTop: "2%",
-      marginBottom: "1%",
-      color: "black",
-      fontWeight: "bold",
-      fontFamily: "Arial",
-    },
+    
   })
 );
 

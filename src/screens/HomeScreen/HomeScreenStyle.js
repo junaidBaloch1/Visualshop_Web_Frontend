@@ -5,16 +5,20 @@ const useStyles = makeStyles((theme) =>
     Button :{
         textAlign: "center",
         marginTop: "1em",
-        padding: "1em",
+        padding: "0.5em",
         backgroundColor: "#442c2e",
         color: "white",
         display: "flex",
        // padding: "0.4em",
         //marginLeft: "2.6em",
-        // width:"10em",
-        fontSize: "22px",
+        width:"10em",
+        fontSize: "24px",
         fontFamily: "Helvetica Neue",
         fontWeight: "bold",
+
+        '&:hover':{
+            color:"black",
+        }
      
 
     },
@@ -29,7 +33,38 @@ const useStyles = makeStyles((theme) =>
     StyleProduct:{
        width:"80%",
        margin: " 2em auto",
-    }
+    },
+    title2: {
+        marginLeft: "10%",
+        marginTop: "2%",
+        marginBottom: "1%",
+        color: "black",
+        fontWeight: "bold",
+        fontFamily: "Arial",
+      },
+
+     category:{
+        display:"flex",
+        justifyContent:"space-between",
+        // backgroundColor:"#fc7703", 
+        borderRadius:"6px", 
+        border:"2px solid black"
+     },
+
+     btn: {
+      
+
+
+
+        display:"flex",
+        justifyContent:"space-between", 
+        padding:"0.8em",
+        
+
+       
+      
+      },
+    
 })
 );
 export { useStyles };

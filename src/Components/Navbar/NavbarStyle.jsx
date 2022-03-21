@@ -10,8 +10,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: "1",
     cursor: "pointer",
     fontFamily: "Helvetica Neue",
-    fontWeight: "bold",
-    color: "white", 
+    fontSize:"30px",
+    color: "white",
+    textTransform: "uppercase" , 
     width:"100%",
     
      
@@ -26,8 +27,9 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: "none",
     color: "white",
-    fontSize: "26px",
+    fontSize: "20px",
     alignItems:"center",
+    textTransform: "uppercase" ,
     marginLeft: theme.spacing(15),
     fontFamily: "Helvetica Neue",
   
@@ -35,6 +37,21 @@ const useStyles = makeStyles((theme) => ({
       borderBottom: "3px solid white",
       
     },
+  },
+  links:{
+    textDecoration: "none",
+    color: "white",
+    fontSize: "20px",
+    alignItems:"center",
+    textTransform: "uppercase" ,
+    marginLeft: theme.spacing(15),
+    fontFamily: "Helvetica Neue",
+  
+    "&:hover": {
+      borderBottom: "3px solid white",
+      
+    },
+
   },
   profile: {
     textDecoration: "none",
@@ -61,7 +78,18 @@ const useStyles = makeStyles((theme) => ({
     marginRight:"11em",   
     display:"flex",
     justifyContent:"flex-end"
-  }
+  }, btn:{
+    backgroundColor:"#442c2e",
+    color:"white",
+    padding:"0.8em",
+    margin:"0px",
+    width:"10em",
+    fontFamily:"Helvetica Neue",
+    fontSize:"20px",
+    borderRadius:"6px",
+   
+   
+  },
  
 }));
 

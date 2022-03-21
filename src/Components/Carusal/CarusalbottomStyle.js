@@ -4,11 +4,14 @@ const useStyles = makeStyles((theme) =>
     container: {
       marginTop: "40px",
       backgroundColor: "#442C2E",
+       marginBottom:"1em",
     },
     card: {
       Width: "100%",
       height: "150px",
       marginTop: "0px",
+      // marginBottom:"1em",
+      fontFamily:"Helvetica Neue",
       backgroundColor: "#442C2E",
       color: "white",
       margin: "2px",

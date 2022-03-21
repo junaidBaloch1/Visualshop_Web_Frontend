@@ -47,7 +47,7 @@ const SignScreen = (props) => {
         time: date.getTime(),
       };
       setLoading(false);
-      navigate("/profile");
+      navigate("/");
       //store data in local storage and redux
       props.updateLoginData(response.data.access, date.getTime());
       localStorage.setItem("LOGIN_INFO", JSON.stringify(LOGIN_INFO));
@@ -86,7 +86,7 @@ const SignScreen = (props) => {
         time: date.getTime(),
       };
       setLoading(false);
-      navigate("/profile");
+      navigate("/");
       //store data in local storage and redux
       props.updateLoginData(response.data.access, date.getTime());
       localStorage.setItem("LOGIN_INFO", JSON.stringify(LOGIN_INFO));
@@ -149,7 +149,7 @@ const SignScreen = (props) => {
                 clientId={clientId}
                 buttonText="Sign In with Google"
                 render={renderProps => (
-                  <Button className={classes.btnstyle} onClick={renderProps.onClick} disabled={renderProps.disabled}>Sign In with Google</Button>
+                  <Button className={classes.btnstyle} onClick={renderProps.onClick} >Sign In with Google</Button>
                 )}
                 onSuccess={onLoginSuccess}
                 onFailure={onLoginFailure}

@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) =>
         margin: "8px 0",
         backgroundColor: "#442c2e",
         color: "white",
-        width:"12em",
+        width:"13em",
        
         fontSize: "21px",
         "&:hover": {
