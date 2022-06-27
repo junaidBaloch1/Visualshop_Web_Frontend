@@ -48,15 +48,7 @@ const Carusal = () => {
   // };
   return (
     <Box>
-        <Box style={{marginTop:"2em"}}>
-        {SliderText.map((title) => {
-          return (
-            <Box className={classes.card} key={title.id}>
-              <Carusalbottom texts={title} />
-            </Box>
-          );
-        })}
-      </Box>
+       
       <Box className={classes.container}>
         <Carousel
           className={classes.carousel}
@@ -77,6 +69,15 @@ const Carusal = () => {
           slideImageFit="cover"
           thumbnailWidth="100px"
         />
+      </Box>
+      <Box style={{}}>
+        {SliderText.map((title) => {
+          return (
+            <Box className={classes.card} key={title.id}>
+              <Carusalbottom texts={title} />
+            </Box>
+          );
+        })}
       </Box>
     
     </Box>

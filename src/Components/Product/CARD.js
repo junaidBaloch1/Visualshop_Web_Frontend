@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 import TextRating from "../Rating";
 import { useStyles } from "./CardStyle";
 import AddShoppingCartSharpIcon from "@mui/icons-material/AddShoppingCartSharp";
-import {feedbackCalculator} from '../../APIFunctionsFolder/APIFunctionsFile'
+import {feedbackCalculator} from '../../FunctionsFolder/APIFunctionsFile'
 
 const CARD = ({product}) => {
   const classes = useStyles();

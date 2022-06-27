@@ -1,5 +1,5 @@
 import React from 'react'
-import { diff_minutes } from "../../APIFunctionsFolder/APIFunctionsFile";
+import { diff_minutes } from "../../FunctionsFolder/APIFunctionsFile";
 import Navbar from '../Navbar/Navbar'
 import Makemodal from './Makemodal';
 import Footer from '../Footer/Footer'

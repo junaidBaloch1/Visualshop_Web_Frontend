@@ -17,7 +17,7 @@ import { useStyles } from './CodeEmailScreenStyle'
 import {
   UserEmailHandler,
   ValidateEmail,
-} from "../../../../APIFunctionsFolder/APIFunctionsFile";
+} from "../../../../FunctionsFolder/APIFunctionsFile";
 
 const CodeEmailScreen = (props) => {
 

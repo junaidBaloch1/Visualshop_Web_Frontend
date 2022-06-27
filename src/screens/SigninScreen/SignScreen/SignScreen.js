@@ -8,7 +8,7 @@ import {
   UserLoginHandler,
   GoogleAuthHandler,
   ValidateEmail,
-} from "../../../APIFunctionsFolder/APIFunctionsFile";
+} from "../../../FunctionsFolder/APIFunctionsFile";
 
 import {
   Paper,

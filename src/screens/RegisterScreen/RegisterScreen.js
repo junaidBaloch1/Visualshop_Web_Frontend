@@ -19,7 +19,7 @@ import {
   UserSignupHandler,
   GoogleAuthHandler,
   ValidateEmail,
-} from "../../APIFunctionsFolder/APIFunctionsFile";
+} from "../../FunctionsFolder/APIFunctionsFile";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { CLIENT_ID } from "../../config";
 

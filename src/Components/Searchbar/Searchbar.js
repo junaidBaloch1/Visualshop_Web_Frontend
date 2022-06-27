@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Typography, Box, Button, Modal, InputBase } from "@material-ui/core";
+import { Typography, Box, IconButton,Button, Modal, InputBase } from "@material-ui/core";
 import { Link } from 'react-router-dom';
 import { useStyles } from "./SearchbarStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 
-const Searchbar = ({ filter }) => {
+const Searchbar = ({ filter,imageSelector }) => {
   const classes = useStyles();
 
   const [inputText, setInputText] = useState("");
@@ -37,22 +37,33 @@ const Searchbar = ({ filter }) => {
         </Box>
 
 
-        
+          <Box>
           <Button onClick={() => filter(inputText)} className={classes.edgBtn}>Search</Button>
-        
-      </Box>
+          </Box>
+      </Box> 
+          
       
-
-        <Box className={classes.searchImg}>
-          <Button className={classes.cameraIcon}  ><FontAwesomeIcon icon={faCamera} /></Button>
+      <Box className={classes.searchImg}>
+       <input onChange={imageSelector}  accept="image/*" id="icon-button-file"
+        type="file" style={{ display: 'none' }} />
+      <label htmlFor="icon-button-file">
+        <IconButton aria-label="upload picture"
+        component="span">
+          <FontAwesomeIcon className={classes.cameraIcon} icon={faCamera} />
+        </IconButton>
+      </label>
+      
           <Typography style={{padding:"0.3em"}} variant="h5">search by image..</Typography>
+
+          </Box>
         </Box>
 
+ 
 
     
 
 
-    </Box>
+  
 
 
   );

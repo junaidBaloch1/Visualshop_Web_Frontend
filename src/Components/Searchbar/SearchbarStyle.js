@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) =>
       // marginRight:"6px",
       textAlign:"center",
      
-      padding:"1em 0em",
+      padding:"0.7em 0em",
       // height:"4em"
     },
    
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) =>
       fontSize:"20px",
       padding:"1em",
       // position:"relative",
-       width:"10em",
+       width:"8em",
       
       '&:hover':{
         color:'black',

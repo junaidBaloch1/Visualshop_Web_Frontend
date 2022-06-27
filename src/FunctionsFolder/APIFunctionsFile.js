@@ -3,7 +3,7 @@ import Axios from "axios";
 const UserLoginHandler = async (email, password) => {
   try {
     const response = await Axios.post(
-      "https://visualshopp.herokuapp.com/api/customer/auth/login",
+      "http://127.0.0.1:8000/api/customer/auth/login",
       {
         username: email,
         password: password,
@@ -63,7 +63,7 @@ const UserSignupHandler = async (email, password) => {
   // console.log(email,password)
   try {
     const response = await Axios.post(
-      "https://visualshopp.herokuapp.com/api/customer/auth/register",
+      "http://127.0.0.1:8000/api/customer/auth/register",
       {
         email: email,
         password: password,
@@ -123,7 +123,7 @@ const UserEmailHandler = async (email) => {
   // console.log(email,password)
   try {
     const response = await Axios.post(
-      "https://visualshopp.herokuapp.com/api/customer/auth/password_reset/",
+      "http://127.0.0.1:8000/api/customer/auth/password_reset/",
       {
         email: email,
       }
@@ -176,7 +176,7 @@ const UserTokenHandler = async (token, password) => {
   // console.log(email,password)
   try {
     const response = await Axios.post(
-      "https://visualshopp.herokuapp.com/api/customer/auth/password_reset/confirm/",
+      "http://127.0.0.1:8000/api/customer/auth/password_reset/confirm/",
       {
         token: token,
         password: password,
@@ -236,7 +236,7 @@ const GoogleAuthHandler = async (access_token) => {
   // console.log(email,password)
   try {
     const response = await Axios.post(
-      "https://visualshopp.herokuapp.com/api/customer/auth/google",
+      "http://127.0.0.1:8000/api/customer/auth/google",
       {
         token: access_token,
       }
@@ -305,7 +305,7 @@ const GetProductHandler = async (count) => {
 
   try {
     const response = await Axios.get(
-      `https://visualshopp.herokuapp.com/api/shop/products/?page=${count}`
+      `http://127.0.0.1:8000/api/shop/products/?page=${count}`
      
     );
 
@@ -344,7 +344,7 @@ const FilterProductHandler = async (price,tags,categoryId,subcategoryId,searchTe
 
   try {
     const response = await Axios.post(
-      "https://visualshopp.herokuapp.com/api/shop/filterProducts", 
+      "http://127.0.0.1:8000/api/shop/filterProducts", 
       {
         price: price,
         tags: tags,
@@ -393,7 +393,7 @@ const GetCategoriesHandler = async () => {
 
   try {
     const response = await Axios.get(
-      'https://visualshopp.herokuapp.com/api/shop/getAllCategories/'
+      'http://127.0.0.1:8000/api/shop/getAllCategories/'
      
     );
 
@@ -425,13 +425,17 @@ const GetCategoriesHandler = async () => {
  
   }
 };
+
+
+
+
 //< --------------------------------productDetails ------------------------------------>
 
 const ProductDetailHandler = async (count) => {
 
   try {
     const response = await Axios.get(
-      `https://visualshopp.herokuapp.com/api/shop/product/${count}`
+      `http://127.0.0.1:8000/api/shop/product/${count}`
      
     );
 
@@ -463,9 +467,47 @@ const ProductDetailHandler = async (count) => {
  
   }
 };
+// <----------------------------------SearchByImage -------------------------------->
+const SearchImageHandler = async (image) => {
+  // event.preventDefault()
+    const formData = new FormData();
+    formData.append("image", image);
+    try {
+      const response = await Axios({
+        method: "post",
+        url: "http://127.0.0.1:8000/api/shop/products/search-by-image",
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+ 
+      return { status: response.status, data: response.data}
+  }
+  catch (error) {
+      if (error.message == 'Network Error')
+      {
+          return { data: "Unable to get data because of network error", status: null }
+      } 
+      if (error.response.status == 400) {
+          const keys = Object.keys(error.response.data)
+          if (keys.includes("image")) {
+              return { status: null, data: error.response.data.image[0]}
+          }
+          else
+          {
+              return { status: null, data: "Parrameter missing"}
+          }
+      }
+      else if(error.response.status == 404)
+      {
+          return {status: 404, data: error.response.data}
+      }
+      else {
+          return { status: null, data: "Unable to get result because of unknown error"}
+      }
+  }
+}
 
-
-// -----------------------------feedcal--------------------------------->
+// -----------------------------feedbackcal--------------------------------->
 
 const feedbackCalculator = (feedbacks) =>{
 
@@ -491,6 +533,95 @@ const feedbackCalculator = (feedbacks) =>{
 
 
 }
+// <---------------------------------Get CITY And STATE -------------------------------------------->
+
+const GetCityState = async() =>{
+  try{
+    const response = await Axios.get('http://127.0.0.1:8000/api/customer/getProvinceAndCities')
+    
+    return{
+      data:response.data,
+      status:response.status
+
+    }
+  }
+  catch(error){
+    if(error.message === "Network Error"){
+      return {
+        data: "Please try again Your INTERNET DISCONNECTED !!",
+        status: null,
+      };
+    }
+    else if (error.response.status === 404) {
+      // Unauthorize
+      return {
+        data: error.response.data.detail,
+        status: error.response.status,
+      };
+    }
+    else {
+      return {
+        data: "Something went wrong please try later!",
+        status: error.response.status,
+      };
+    }  
+   
+ 
+
+  }
+
+}
+// ------------------------------ Create order -----------------------------------------//
+const PlaceOrder = async (shippingAddress, receiverName, receiverContact, cuopenId,cityId,orderedProducts,paymentMethod  ) =>{
+
+  try{
+    const response = await Axios.post('http://127.0.0.1:8000/api/order/createOrder/',
+    
+    {
+      shippingAddress: shippingAddress,
+      receiverName: receiverName,
+      receiverContact: receiverContact,
+      cuopenId:cuopenId,
+      cityId:cityId,
+      orderedProducts:orderedProducts,
+      paymentMethod:paymentMethod,
+    }
+
+    )
+    
+    return{
+      data:response.data,
+      status:response.status
+
+    }
+  }
+  catch(error){
+    if(error.message === "Network Error"){
+      return {
+        data: "Please try again Your INTERNET DISCONNECTED !!",
+        status: null,
+      };
+    }
+    else if (error.response.status === 404) {
+      // Unauthorize
+      return {
+        data: error.response.data.detail,
+        status: error.response.status,
+      };
+    }
+    else {
+      return {
+        data: "Something went wrong please try later!",
+        status: error.response.status,
+      };
+    }  
+   
+ 
+
+  }
+
+}
+
 
   
 
@@ -507,5 +638,7 @@ export  {
   GetCategoriesHandler,
   ProductDetailHandler,
   feedbackCalculator,
-
+  SearchImageHandler,
+  GetCityState,
+  PlaceOrder,
 };

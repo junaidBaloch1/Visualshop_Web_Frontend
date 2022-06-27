@@ -72,7 +72,7 @@ const Footer = () => {
               </Box>
               <Box mt={1}>
                 <Link color="inherit" href="#">
-                  IslamaBad
+                  Islamabad
                 </Link>
               </Box>
               <Box mt={1}>

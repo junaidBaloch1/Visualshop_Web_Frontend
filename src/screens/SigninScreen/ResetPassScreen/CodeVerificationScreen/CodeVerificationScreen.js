@@ -16,7 +16,7 @@ import {
 import {
   UserTokenHandler,
   ValidateEmail,
-} from "../../../../APIFunctionsFolder/APIFunctionsFile";
+} from "../../../../FunctionsFolder/APIFunctionsFile";
 import { useStyles } from "./CodeVerificationScreenStyle";
 
 

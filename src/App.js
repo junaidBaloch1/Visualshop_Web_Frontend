@@ -18,7 +18,7 @@ import ShippingScreen from "./screens/ShippingScreen/ShippingScreen";
 import CreditCardScreen from "./screens/PaymentScreen/CreditCardScreen/CreditCardScreen";
 import JazzCashScreen from "./screens/PaymentScreen/JazzCashScreen/JazzCashScreen";
 import * as userActions from "./store/actions/userActions/userActions";
-import { diff_minutes } from "./APIFunctionsFolder/APIFunctionsFile";
+import { diff_minutes } from "./FunctionsFolder/APIFunctionsFile";
 import ErrorScreen from './screens/ErrorScreen/ErrorScreen'
 import React, { useEffect } from "react";
 
@@ -31,6 +31,7 @@ const App = (props) => {
     } else {
       props.Update_Login_action(null,null);
     }
+    isLoggedin();
   }, []);
 
   const isLoggedin = () => {
@@ -38,8 +39,14 @@ const App = (props) => {
     const date = new Date();
     if (props.access == null) return false;
     const timeDiff = diff_minutes(date.getTime(), props.timeAdded);
-    if (timeDiff < 50) return true;
-    else return false;
+    if (timeDiff < 50){
+      return true
+    } 
+    else{
+      props.Update_Login_action(null,null);
+      localStorage.setItem("LOGIN_INFO", JSON.stringify(''));
+       return false;
+    }
   };
   var isLogin = isLoggedin();
 

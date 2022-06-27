@@ -9,11 +9,14 @@ import MyContainer from '../../../Components/Container/Container'
 const UserinfoScreen = (props) => {
  
  const classes = useStyles();
+
  const UserLogoutHandeler = () =>{
     
      props.updateLoginData(null,null);
-     var USER_INFO_KEY = localStorage.key('LOGIN_INFO');
-     localStorage.clear(USER_INFO_KEY);
+    //  var USER_INFO_KEY = localStorage.key('LOGIN_INFO');
+    //  localStorage.clear(USER_INFO_KEY);
+
+    localStorage.setItem("LOGIN_INFO", JSON.stringify(''));
  }
 
  
